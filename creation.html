@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#070912">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Studio IA — Création d’images</title>
+<style>
+*{box-sizing:border-box;-webkit-box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{margin:0;min-height:100%;background:#070912;color:#eef3ff;font-family:-apple-system,"SF Pro Text",Helvetica,Arial,sans-serif;font-size:16px;-webkit-text-size-adjust:100%}body{padding:constant(safe-area-inset-top) 16px constant(safe-area-inset-bottom);padding:env(safe-area-inset-top) 16px env(safe-area-inset-bottom);background:radial-gradient(ellipse at 50% 0,rgba(42,105,167,.3),transparent 55%),#070912}a{color:#62f5e3}button,input,textarea{font:inherit}button{cursor:pointer;-webkit-appearance:none;appearance:none}.wrap{max-width:760px;margin:0 auto;padding:18px 0 36px}.top{display:flex;display:-webkit-flex;align-items:center;-webkit-align-items:center;justify-content:space-between;-webkit-justify-content:space-between;border-bottom:1px solid rgba(125,170,255,.2);padding:8px 0 16px}.brand{font-weight:800;letter-spacing:1px}.brand span{color:#62f5e3}.back{color:#c7d4e9;text-decoration:none;font-size:14px;padding:9px 12px;border:1px solid rgba(125,170,255,.24);border-radius:11px;background:#101827}.hero{padding:32px 0 20px}.eyebrow{font-size:11px;letter-spacing:2px;color:#62f5e3;text-transform:uppercase}.hero h1{font-size:34px;line-height:1.13;margin:10px 0}.hero p,.note{color:#9ba9c0;line-height:1.6;font-size:14px}.card{background:rgba(13,20,34,.94);border:1px solid rgba(125,170,255,.23);border-radius:18px;padding:18px;margin:14px 0;box-shadow:0 12px 40px rgba(0,0,0,.18)}h2{font-size:18px;margin:0 0 8px}label{display:block;color:#aab8cf;font-size:13px;margin:16px 0 7px}textarea{width:100%;min-height:105px;resize:vertical;background:#080d16;color:#fff;border:1px solid #293a54;border-radius:12px;padding:12px;font-size:16px;line-height:1.5;outline:none}select{width:100%;height:44px;background:#080d16;color:#fff;border:1px solid #293a54;border-radius:11px;padding:0 10px;font-size:16px}.actions{display:flex;display:-webkit-flex;flex-wrap:wrap;-webkit-flex-wrap:wrap;gap:9px;margin-top:14px}.primary,.secondary{min-height:44px;border-radius:12px;padding:10px 15px;font-weight:700}.primary{border:0;background:linear-gradient(135deg,#62f5e3,#91c7ff);color:#071115}.primary:disabled{opacity:.55}.secondary{border:1px solid rgba(125,170,255,.3);background:#111c2c;color:#dae6f7;text-decoration:none;display:inline-flex;display:-webkit-inline-flex;align-items:center;-webkit-align-items:center}.status{font-size:13px;color:#aab8cf;line-height:1.5;margin-top:12px;min-height:20px}.preview{display:none;margin-top:16px}.preview img{display:block;max-width:100%;height:auto;border-radius:12px;border:1px solid rgba(125,170,255,.2);margin:0 auto}.warning{border-left:3px solid #ffbd69;padding:10px 12px;background:rgba(255,189,105,.07);border-radius:4px;color:#d7c6a9;font-size:13px;line-height:1.55}.badge{display:inline-block;color:#62f5e3;border:1px solid rgba(98,245,227,.25);border-radius:20px;padding:4px 8px;font-size:11px;margin-bottom:10px}.footer{color:#718099;font-size:12px;line-height:1.6;padding:8px 2px}@media(max-width:420px){.hero h1{font-size:29px}.card{padding:15px}.actions button,.actions a{flex:1 1 auto;text-align:center;justify-content:center}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header class="top"><div class="brand"><span>✦</span> GROK / STUDIO</div><a class="back" href="./index.html">← Retour au chat</a></header>
+  <section class="hero"><div class="eyebrow">Studio de création</div><h1>Donne vie à tes idées.</h1><p>Crée une image depuis une description. Le mode démo utilise un service public sans clé, sous réserve de disponibilité et de limites d’utilisation.</p></section>
+  <section class="card">
+    <span class="badge">IMAGE · MODE DÉMO</span>
+    <h2>Générer une image</h2>
+    <label for="prompt">Décris l’image souhaitée</label>
+    <textarea id="prompt" placeholder="Ex. Une ville futuriste au bord de l’océan, au coucher du soleil, illustration cinématographique"></textarea>
+    <label for="size">Format</label>
+    <select id="size"><option value="1024,1024">Carré · 1024 × 1024</option><option value="1024,768">Paysage · 1024 × 768</option><option value="768,1024">Portrait · 768 × 1024</option></select>
+    <div class="actions"><button class="primary" id="generate">✦ Générer gratuitement</button><a class="secondary" id="openImage" href="#" target="_blank" rel="noopener" style="display:none">Ouvrir / enregistrer</a></div>
+    <div class="status" id="status" role="status" aria-live="polite"></div>
+    <div class="preview" id="preview"><img id="image" alt="Image générée"><p class="note">Sur iPhone, touche et maintiens l’image ou utilise « Ouvrir / enregistrer » pour la sauvegarder, selon les options de Safari.</p></div>
+  </section>
+  <section class="card">
+    <span class="badge">VIDÉO · AUTHENTIFICATION REQUISE</span>
+    <h2>Génération vidéo</h2>
+    <p class="note">La génération vidéo nécessite actuellement un fournisseur qui l’autorise et une authentification. Je ne peux pas promettre un service vidéo illimité et entièrement gratuit. N’ajoute jamais une clé secrète directement dans une page publique : elle serait visible par les visiteurs.</p>
+    <div class="warning">Le site n’envoie aucune clé API. Consulte les conditions, coûts et disponibilités du fournisseur avant toute génération vidéo.</div>
+    <div class="actions"><a class="secondary" href="https://gen.pollinations.ai/docs" target="_blank" rel="noopener">Consulter la documentation vidéo</a></div>
+  </section>
+  <p class="footer">Le mode image sans clé est un accès de démonstration public fourni par un tiers : il peut être limité, indisponible ou modifié sans préavis. Les prompts sont transmis à ce service. Évite d’y inclure des informations personnelles ou confidentielles. Génère uniquement du contenu que tu as le droit de créer.</p>
+</main>
+<script>
+(function(){
+  var prompt=document.getElementById("prompt"),size=document.getElementById("size"),button=document.getElementById("generate"),status=document.getElementById("status"),preview=document.getElementById("preview"),image=document.getElementById("image"),openImage=document.getElementById("openImage");
+  button.onclick=function(){
+    var text=prompt.value.replace(/^\s+|\s+$/g,"");
+    if(!text){status.textContent="Écris une description pour commencer.";prompt.focus();return;}
+    var dims=size.value.split(","),url="https://image.pollinations.ai/prompt/"+encodeURIComponent(text)+"?width="+dims[0]+"&height="+dims[1]+"&seed="+Math.floor(Math.random()*1000000000);
+    button.disabled=true;openImage.style.display="none";preview.style.display="none";status.textContent="Génération en cours… Le service public peut prendre un moment.";
+    image.onload=function(){button.disabled=false;status.textContent="Image prête.";preview.style.display="block";openImage.href=url;openImage.style.display="inline-flex";};
+    image.onerror=function(){button.disabled=false;status.textContent="La génération a échoué ou le service est indisponible. Réessaie plus tard.";};
+    image.src=url;
+  };
+})();
+</script>
+</body>
+</html>
